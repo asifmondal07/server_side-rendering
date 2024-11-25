@@ -22,8 +22,11 @@ function setUser(user){
 function getUser(token){
     if(!token)return null;
     try{
-        return jwt.verify(token,secret);
+        const decodedToken= jwt.verify(token,secret);
+        console.log("Decoded Token:", decodedToken); // Debug decoded payload
+        return { id: decodedToken.id, role: decodedToken.role }; // Ensure 'role' is present
     }catch(error){
+        console.error("Token verification failed:", error.message); // Log error
         return null;
     }
 }
