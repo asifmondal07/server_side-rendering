@@ -17,7 +17,7 @@ const PORT =8000;
 connectMongodb("mongodb://localhost:27017/short-url").then(()=>console.log("connected mongodb"));
 
 app.set("view engine","ejs");
-app.set("vies",path.resolve("./views"))
+app.set("views",path.resolve("./views"))
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));  //get data from in home page
