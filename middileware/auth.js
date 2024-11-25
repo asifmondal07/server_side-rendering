@@ -35,10 +35,10 @@ const {getUser}=require("../service/auth");
     next();
 }
 
- function restrictTo(role=[]){
+ function restrictTo(role){
     return function(req,res,next){
         if(!req.user)return res.redirect("/login")
-        if(!role.includes(req.user.role))return res.end("unauthorize")
+        if(!role.includes(req.user.role))return res.end("unauthorize");
         next();
     }
     

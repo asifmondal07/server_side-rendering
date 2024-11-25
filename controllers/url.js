@@ -5,13 +5,13 @@ const URL=require("../models/url");
 async function handelGenarateShorteUrl(req,res){
     const body=req.body;
     if(!body.url)return res.status(400).json({error:"url is require"});
-
+    console.log(req.user);
     const shortId=shortid(8);
     await URL.create({
         shortId:shortId,
         redirectURL:body.url,
         visittory:[],
-        createdBy:req.user._id
+        createdBy:req.user._id, // Assigning the user ID
     })
     return res.render("home",{          //redirect to home page
         id:shortId

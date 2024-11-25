@@ -24,8 +24,8 @@ async function handelUserLogin(req,res){
         // const seassionId=uuidv4();  // that use for statefull method
         // setUser(seassionId,User);
         // res.cookie("uid",seassionId)
-        const token=setUser(user);
-        res.cookie("token",token);    //set uid inside cookie
+        const token=setUser(User);
+        res.cookie("token",token);    //set token inside cookie
     return res.redirect("/")
     // return res.json({token});    //that use for authorizetion
 }
