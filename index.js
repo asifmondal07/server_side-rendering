@@ -4,7 +4,8 @@ const URLrouter=require("./routes/url");
 const path=require("path");
 const staticRouter=require("./routes/static_routes");
 const userRouter=require("./routes/user");
-const {restrictToLoggedinUserOnly}=require("./middileware/auth")
+const {checkForAuthorization,
+    restrictTo}=require("./middileware/auth")
 const {connectMongodb}=require("./connection/connect");
 const { clear } = require("console");
 
@@ -21,9 +22,10 @@ app.set("vies",path.resolve("./views"))
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));  //get data from in home page
 app.use(cookieParser());   //set cookie
+app.use(checkForAuthorization);
 
 
-app.use("/url",restrictToLoggedinUserOnly,URLrouter);
+app.use("/url",restrictTo(["NORMAL"]),URLrouter);
 app.use("/user",userRouter);
 app.use("/",staticRouter);
 

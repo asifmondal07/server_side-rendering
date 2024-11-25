@@ -11,7 +11,7 @@ async function handelGenarateShorteUrl(req,res){
         shortId:shortId,
         redirectURL:body.url,
         visittory:[],
-        createdBy:req.user_id
+        createdBy:req.user._id
     })
     return res.render("home",{          //redirect to home page
         id:shortId
