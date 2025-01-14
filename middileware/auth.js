@@ -1,8 +1,5 @@
 const {getUser}=require("../service/auth");
 
-
-
-
  function checkForAuthorization(req,res,next){
     const cookietoken=req.cookies?.token;
     if(!cookietoken)return next();

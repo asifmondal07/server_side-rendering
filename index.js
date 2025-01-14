@@ -14,7 +14,11 @@ const app=express();
 const PORT =8000;
 
 
-connectMongodb("mongodb://localhost:27017/short-url").then(()=>console.log("connected mongodb"));
+connectMongodb("mongodb://127.0.0.1:27017/short-url",{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000}) // Timeout after 5s instead of 30s
+    .then(()=>console.log("connected mongodb"));
 
 app.set("view engine","ejs");
 app.set("views",path.resolve("./views"))
