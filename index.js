@@ -11,7 +11,7 @@ const { clear } = require("console");
 
 const app=express();
 
-const PORT =8000;
+const PORT =8001;
 
 
 connectMongodb("mongodb://127.0.0.1:27017/short-url",{
